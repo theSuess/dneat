@@ -160,7 +160,7 @@ public:
 		// store result back to activations
 		// skip inputs since they don't get activated
 
-		for(uint i = numInputs; i < neurons.length) i++)
+		for(uint i = numInputs; i < neurons.length; i++)
 		{
 			double x = neurons[i].activesum;
 			neurons[i].activesum = 0;
@@ -352,17 +352,17 @@ public:
 			}
 			if(connections[i].weigth < 0)
 			{
-				double delta = connections[i].hebbPreRate
+				double delta = (connections[i].hebbPreRate
 						* (maxWeight - connections[i].weight)
 						* incomingNeuronActivation
 						* (1.0 - outgoingNeuronActivation)
 						- connections[i].hebbRate * maxWeight
 						* incomingNeuronActivation
-						* outgoingNeuronActivation;
+						* outgoingNeuronActivation);
 				connections.weight = -(connections[i].weight + delta);
 			}
-			double minw = -params.MaxWeight,
-			double maxw = params.MaxWeight,
+			double minw = -params.MaxWeight;
+			double maxw = params.MaxWeight;
 			if(connections[i].weigth < min)
 			{
 				connections[i].weight = minw;
@@ -449,7 +449,7 @@ public:
 		// Adjust each weight
 		for(uint i = 0; i < neurons.length;i++)//to
 		{
-			for(uint j = 0; < neurons.length; j++)
+			for(uint j = 0;j < neurons.length; j++)
 			{
 				int idx = connectionExists(i,j);
 				if(idx != -1)
