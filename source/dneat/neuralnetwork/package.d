@@ -44,7 +44,6 @@ public:
 			// Add the neuron connection
 
 			Connection c = new Connection();
-			
 			c.sourceNeuronIdx = 0;
 			c.targetNeuronIdx = 3;
 			c.weight = 0;
@@ -132,7 +131,6 @@ public:
 				}
 			}
 		}
-		
 		totalError = 0;
 		totalWeightChange = [];
 		totalWeightChange.length = connections.length;
@@ -186,7 +184,7 @@ public:
 
 double af_sigmoidUnsigned(double x,double slope,double shift)
 {
-	return 1.0 / (1.0 + exp( - slope * x - shift));	
+	return 1.0 / (1.0 + exp( - slope * x - shift));
 }
 
 double af_sigmoidSigned(double x,double slope,double shift)
@@ -207,79 +205,79 @@ double af_tanhCubic(double x,double slope,double shift)
 
 double af_stepSigned(double x, double shift)
 {
-	    double tY;
-	    if (x > shift)
-		    {
-		        tY = 1.0;
-		    }
-	    else
-		    {
-		        tY = -1.0;
-		    }
+	double tY;
+	if (x > shift)
+	{
+		tY = 1.0;
+	}
+	else
+	{
+		tY = -1.0;
+	}
 
-	    return tY;
+	return tY;
 }
 
 double af_stepUnsigned(double x, double shift)
 {
-	    if (x > shift)
-		    {
-		        return 1.0;
-		    }
-	    else
-		    {
-		        return 0.0;
-		    }
+	if (x > shift)
+	{
+		return 1.0;
+	}
+	else
+	{
+		return 0.0;
+	}
 }
 
 double af_gaussSigned(double x, double slope, double shift)
 {
-	    double tY = exp( - slope * x * x + shift);
-	    return (tY-0.5)*2.0;
+	double tY = exp( - slope * x * x + shift);
+	return (tY-0.5)*2.0;
 }
 
 double af_gaussUnsigned(double x, double slope, double shift)
 {
-	    return exp( - slope * x * x + shift);
+    return exp( - slope * x * x + shift);
 }
 
 double af_abs(double x, double shift)
 {
-	    return ((x + shift)< 0.0)? -(x + shift): (x + shift);
+    return ((x + shift)< 0.0)? -(x + shift): (x + shift);
 }
 
 double af_sineSigned(double x, double freq, double shift)
 {
-	    freq = 3.141592;
-	    return sin(x * freq + shift);
+	freq = 3.141592;
+	return sin(x * freq + shift);
 }
 
 double af_sineUnsigned(double x, double freq, double shift)
 {
-	    double tY = sin((x * freq + shift) );
-	    return (tY + 1.0) / 2.0;
+	double tY = sin((x * freq + shift) );
+	return (tY + 1.0) / 2.0;
 }
 
 double af_squareSigned(double x, double highPulseSize, double lowPulseSize)
 {
-	    return 0.0;    // TODO
+	return 0.0;    // TODO
 }
 double af_squareUnsigned(double x, double highPulseSize, double lowPulseSize)
 {
-	    return 0.0;    // TODO
+	return 0.0;    // TODO
 }
 
 double af_linear(double x, double shift)
 {
-	    return (x + shift);
+	return (x + shift);
 }
 
 double unsignedSigmoidDerivative(double x)
 {
-	    return x * (1 - x);
+	return x * (1 - x);
 }
 
 double tanhDerivative(double x)
 {
-	    return 1 - x * x;
+	return 1 - x * x;
 }
